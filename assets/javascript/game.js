@@ -1,5 +1,21 @@
 var game = {
-  words: ["various", "words", "for", "testing", "purposes"],
+  words: [
+    "rail",
+    "lightning",
+    "instagib",
+    "nail",
+    "shambler",
+    "plasma",
+    "strafe",
+    "rocket",
+    "impressive",
+    "excellent",
+    "heavy",
+    "mega",
+    "spawn",
+    "slipgate",
+    "bunnyhop"
+  ],
   emptyWord: [],
   chosenWord: [],
   incorrectGuesses: [],

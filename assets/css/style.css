@@ -1,0 +1,42 @@
+body {
+  background-image: url(../images/quake.jpg);
+}
+
+header {
+  color: white;
+  text-align: center;
+  font-size: 32px;
+}
+
+h2 {
+  color: white;
+}
+
+h1 {
+  color: white;
+}
+#gameSpace {
+  position: absolute;
+  left: 20%;
+  border: 2px;
+  border-color: white;
+  border-style: solid;
+  float: left;
+  box-sizing: border-box;
+  width: 400px;
+  height: 700px;
+}
+#scoreSpace {
+  position: absolute;
+  right: 20%;
+  border: 2px;
+  border-color: white;
+  border-style: solid;
+  float: left;
+  box-sizing: border-box;
+  width: 400px;
+  height: 700px;
+}
+#emptyW {
+  font-size: 24px;
+}
