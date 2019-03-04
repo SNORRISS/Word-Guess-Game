@@ -47,9 +47,10 @@ var game = {
       if (guess == game.chosenWord[i]) {
         game.emptyWord[i] = game.chosenWord[i];
         game.correctCounter++;
-        //if (combo == 1) {
-        //put impressive sound here
-        //}
+        correctSound.play();
+        if (game.combo == 1) {
+          comboSound.play();
+        }
         game.combo = 1;
         console.log("test correct");
       } else if (game.correctCounter == 0 && i == game.chosenWord.length - 1) {
@@ -57,6 +58,7 @@ var game = {
           game.remainingGuesses--;
           game.incorrectGuesses.push(guess);
           game.combo = 0;
+          incorrectSound.play();
         }
       }
       if (game.correctCounter > 0 && i == game.chosenWord.length - 1) {
@@ -99,6 +101,23 @@ document.getElementById("remainingG").textContent =
 document.getElementById("guesses").textContent = game.incorrectGuesses;
 document.getElementById("winC").textContent = game.winTotal;
 
+
+var correctSound = document.createElement("audio");
+correctSound.setAttribute("src", "./assets/sounds/hit.wav");
+correctSound.setAttribute("type", "audio/wav");
+
+var incorrectSound = document.createElement("audio");
+incorrectSound.setAttribute("src", "./assets/sounds/jump1.wav");
+incorrectSound.setAttribute("type", "audio/wav");
+
+var comboSound = document.createElement("audio");
+comboSound.setAttribute("src", "./assets/sounds/impressive.wav");
+comboSound.setAttribute("type", "audio/wav");
+
+var fullSound = document.createElement("audio");
+fullSound.setAttribute("src", "./assets/sounds/holyshit.wav");
+fullSound.setAttribute("type", "audio/wav");
+
 document.onkeyup = function(event) {
   if (game.ended == true) {
     game.ended = false;
@@ -123,7 +142,7 @@ document.onkeyup = function(event) {
 
     if (game.checkWin()) {
       if (game.remainingGuesses == 10) {
-        //add holy shit sound
+        fullSound.play();
       }
       game.resetGame();
       game.ended = true;
