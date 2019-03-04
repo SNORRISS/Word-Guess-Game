@@ -22,11 +22,13 @@ var game = {
   remainingGuesses: 10,
   correctCounter: 0,
   min: Math.ceil(0),
-  max: Math.floor(5),
+  max: 0,
   ended: false,
   winTotal: 0,
+  combo: 0,
 
   getRandomInt: function() {
+    game.max = Math.floor(game.words.length);
     return Math.floor(Math.random() * (game.max - game.min)) + game.min;
   },
 
@@ -45,11 +47,16 @@ var game = {
       if (guess == game.chosenWord[i]) {
         game.emptyWord[i] = game.chosenWord[i];
         game.correctCounter++;
+        //if (combo == 1) {
+        //put impressive sound here
+        //}
+        game.combo = 1;
         console.log("test correct");
       } else if (game.correctCounter == 0 && i == game.chosenWord.length - 1) {
         if (game.incorrectGuesses.includes(guess) != true) {
           game.remainingGuesses--;
           game.incorrectGuesses.push(guess);
+          game.combo = 0;
         }
       }
       if (game.correctCounter > 0 && i == game.chosenWord.length - 1) {
@@ -98,19 +105,26 @@ document.onkeyup = function(event) {
     document.getElementById("remainingG").textContent =
       "Remaining guesses: " + game.remainingGuesses;
     document.getElementById("emptyW").textContent = game.emptyWord.join(" ");
-    document.getElementById("guesses").textContent = game.incorrectGuesses;
+    document.getElementById("guesses").textContent = game.incorrectGuesses.join(
+      " "
+    );
     document.getElementById("winS").textContent = "";
     document.getElementById("winC").textContent = game.winTotal;
   } else {
     game.checkGuess(event.key);
 
-    document.getElementById("guesses").textContent = game.incorrectGuesses;
+    document.getElementById("guesses").textContent = game.incorrectGuesses.join(
+      " "
+    );
     document.getElementById("emptyW").textContent = game.emptyWord.join(" ");
     document.getElementById("remainingG").textContent =
       "Remaining guesses: " + game.remainingGuesses;
     document.getElementById("winC").textContent = game.winTotal;
 
     if (game.checkWin()) {
+      if (game.remainingGuesses == 10) {
+        //add holy shit sound
+      }
       game.resetGame();
       game.ended = true;
       document.getElementById("winS").textContent =

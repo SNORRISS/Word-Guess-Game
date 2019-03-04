@@ -10,14 +10,16 @@ header {
 
 h2 {
   color: white;
+  font-size: 32px;
 }
 
 h1 {
   color: white;
 }
 #gameSpace {
+  text-align: center;
   position: absolute;
-  left: 20%;
+  left: 15%;
   border: 2px;
   border-color: white;
   border-style: solid;
@@ -28,7 +30,7 @@ h1 {
 }
 #scoreSpace {
   position: absolute;
-  right: 20%;
+  right: 15%;
   border: 2px;
   border-color: white;
   border-style: solid;
@@ -38,5 +40,5 @@ h1 {
   height: 700px;
 }
 #emptyW {
-  font-size: 24px;
+  font-size: 32px;
 }
